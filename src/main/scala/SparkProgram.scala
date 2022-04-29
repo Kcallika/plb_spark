@@ -168,4 +168,18 @@ object SparkProgram extends App {
   df_join.printSchema()
   df_join.show(10)
 
+  // it a new day
+  // create table in global catalog spark
+  // like pointer
+  println("================ SQL ======================== ")
+  df_orderline.createOrReplaceTempView(viewName = "table_detailsCommandes")
+  df_orders.createOrReplaceTempView("tables_commandes")
+  val df_sql = ss.sql(sqlText= "SELECT * FROM table_detailsCommandes dc INNER JOIN tables_commandes  tc ON dc.orderid = tc.orderid LIMIT 5")
+  df_sql.show()
+
+  // info about query
+  df_sql.explain()
+
+
+
 }
