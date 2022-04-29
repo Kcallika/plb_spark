@@ -1,5 +1,5 @@
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions.{col, concat, lit, when}
 import org.apache.spark.sql.types.{DoubleType, IntegerType, LongType, StringType, StructField, StructType, TimestampType}
 // import org.apache.spark.serializer.KryoSerializer
@@ -179,7 +179,5 @@ object SparkProgram extends App {
 
   // info about query
   df_sql.explain()
-
-
 
 }
